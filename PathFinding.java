@@ -11,26 +11,55 @@ import java.util.Stack;
 
 public class PathFinding {
 
+   // Declaring two variables of type Airports.
     private Airports startAirport;
     private Airports destinationAirport;
 
+    /**
+     * // Java
+     * public Airports getStartAirport() {
+     *         return startAirport;
+     *     }
+     * 
+     * @return The startAirport object.
+     */
     public Airports getStartAirport() {
         return startAirport;
     }
 
+
+/**
+ * This function sets the startAirport variable to the value of the startAirport parameter
+ * 
+ * @param startAirport The airport where the flight starts
+ */
     public void setStartAirport(Airports startAirport) {
         this.startAirport = startAirport;
     }
 
+    
+
+/**
+ * This function returns the destination airport of the flight
+ * 
+ * @return The destination airport.
+ */
     public Airports getDestinationAirport() {
         return destinationAirport;
     }
 
+  /**
+   * This function sets the destination airport of the flight
+   * 
+   * @param destinationAirport Airports
+   */
     public void setDestinationAirport(Airports destinationAirport) {
         this.destinationAirport = destinationAirport;
     }
 
 
+    // Reading the input file and the airports.csv file and then it is splitting the data and storing
+    // it in the variables.
     public PathFinding(String inputSrc, String outputSrc) throws IOException{
         FileReader inputReader = new FileReader(inputSrc);
         FileReader airportReader = new FileReader("airports.csv");
@@ -62,6 +91,13 @@ public class PathFinding {
         }
     }
     
+/**
+ * It reads the routes.csv file and returns a list of routes that start from the airport with the given
+ * airportId
+ * 
+ * @param airportId The airport id of the airport you want to get the routes from.
+ * @return A list of routes
+ */
     public List<Routes> getActions(String airportId) throws IOException{
         FileReader routesReader = new FileReader("routes.csv");
         BufferedReader routesData = new BufferedReader(routesReader);
@@ -84,6 +120,16 @@ public class PathFinding {
         }
         return actions;
     }
+
+
+/**
+ * It reads a csv file and returns an object of type Airports if the airportId or airportCode matches
+ * the airportId or airportCode in the csv file
+ * 
+ * @param airportId The IATA code of the airport
+ * @param airportCode "1"
+ * @return The method is returning an object of type Airports.
+ */
     public Airports getAirports(String airportId, String airportCode) throws IOException{
         System.out.println(airportId);
         FileReader airportReader = new FileReader("airports.csv");
@@ -110,6 +156,18 @@ public class PathFinding {
 
         
     }
+
+
+
+
+    /**
+     * It takes in a start and end airport, and returns a node that contains the path from the start to
+     * the end airport
+     * 
+     * @param start The starting airport
+     * @param end The destination airport
+     * @return A node object
+     */
     public Node generatePath(Airports start, Airports end) throws IOException{
         HashSet<String> explored = new HashSet<>();
         Queue<Node> frontier = new LinkedList<>();
@@ -138,6 +196,12 @@ public class PathFinding {
         return null;
     }
 
+/**
+ * This function takes a stack of nodes as a parameter and writes the flight information of each node
+ * to a file called output.txt
+ * 
+ * @param solution Stack of nodes that represent the solution path
+ */
     public void printToFile(Stack<Node> solution) throws IOException{
         FileWriter outpuWriter = new FileWriter("output.txt");
         BufferedWriter br = new BufferedWriter(outpuWriter);
@@ -170,9 +234,6 @@ public class PathFinding {
 
        
     }
-      
-    
-    
-    
+        
     
 }
