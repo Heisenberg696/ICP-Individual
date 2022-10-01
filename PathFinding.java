@@ -89,6 +89,14 @@ public class PathFinding {
         }
         return actions;
     }
+/**
+ * It reads a csv file and returns an object of type Airports if the airportId or airportCode matches
+ * the airportId or airportCode in the csv file
+ * 
+ * @param airportId The IATA code of the airport
+ * @param airportCode "1"
+ * @return The method is returning an object of type Airports.
+ */
     public Airports getAirports(String airportId, String airportCode) throws IOException{
         System.out.println(airportId);
         FileReader airportReader = new FileReader("airports.csv");
