@@ -26,6 +26,11 @@ public class PathFinding {
         return destinationAirport;
     }
 
+  /**
+   * This function sets the destination airport of the flight
+   * 
+   * @param destinationAirport Airports
+   */
     public void setDestinationAirport(Airports destinationAirport) {
         this.destinationAirport = destinationAirport;
     }
